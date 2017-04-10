@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>keyify.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+
+    <ul class="sections">
+
+          <li id="title">
+              <div class="annotation">
+                  <h1>keyify.js</h1>
+              </div>
+          </li>
+
+
+
+        <li id="section-1">
+            <div class="annotation">
+
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+
+            </div>
+
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">replacer</span> (<span class="hljs-params">key, value</span>) </span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Array</span>.isArray(value)) {
+        <span class="hljs-keyword">if</span> (value.length != <span class="hljs-number">0</span> &amp;&amp; (value[<span class="hljs-number">0</span>] === <span class="hljs-string">'object'</span> || value[<span class="hljs-number">0</span>] === <span class="hljs-string">'array'</span>)) {
+            <span class="hljs-keyword">return</span> [ <span class="hljs-string">'array'</span> ].concat(value)
+        }
+        <span class="hljs-keyword">return</span> value
+    }
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> value == <span class="hljs-string">'object'</span>) {
+        <span class="hljs-keyword">var</span> array = [ <span class="hljs-string">'object'</span> ]
+        <span class="hljs-keyword">var</span> keys = <span class="hljs-built_in">Object</span>.keys(value).sort()
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, I = keys.length; i &lt; I; i++) {
+            array.push(keys[i], value[keys[i]])
+        }
+        <span class="hljs-keyword">return</span> array
+    }
+    <span class="hljs-keyword">return</span> value
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reviver</span> (<span class="hljs-params">key, value</span>) </span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Array</span>.isArray(value)) {
+        <span class="hljs-keyword">if</span> (value[<span class="hljs-number">0</span>] === <span class="hljs-string">'array'</span>) {
+            value.shift()
+            <span class="hljs-keyword">return</span> value
+        }
+        <span class="hljs-keyword">if</span> (value[<span class="hljs-number">0</span>] === <span class="hljs-string">'object'</span>) {
+            <span class="hljs-keyword">var</span> object = {}
+            value.shift()
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, I = value.length; i &lt; I; i += <span class="hljs-number">2</span>) {
+                object[value[i]] = value[i + <span class="hljs-number">1</span>]
+            }
+            <span class="hljs-keyword">return</span> object
+        }
+    }
+    <span class="hljs-keyword">return</span> value
+}
+
+exports.stringify = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">object</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">JSON</span>.stringify(object, replacer, <span class="hljs-number">0</span>)
+}
+
+exports.parse = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">string</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">JSON</span>.parse(string, reviver)
+}</pre></div></div>
+
+        </li>
+
+    </ul>
+  </div>
+</body>
+</html>
