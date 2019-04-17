@@ -1,6 +1,6 @@
 {
     "name":                 "keyify",
-    "version":              "1.0.0",
+    "version":              "1.0.1",
     "description":
 
       "Create a canonical string key from a JSON object.",
