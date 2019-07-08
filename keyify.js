@@ -6,9 +6,9 @@ function replacer (key, value) {
         return value
     }
     if (typeof value == 'object') {
-        var array = [ 'object' ]
-        var keys = Object.keys(value).sort()
-        for (var i = 0, I = keys.length; i < I; i++) {
+        const array = [ 'object' ]
+        const keys = Object.keys(value).sort()
+        for (let i = 0, I = keys.length; i < I; i++) {
             array.push(keys[i], value[keys[i]])
         }
         return array
@@ -23,9 +23,9 @@ function reviver (key, value) {
             return value
         }
         if (value[0] === 'object') {
-            var object = {}
+            const object = {}
             value.shift()
-            for (var i = 0, I = value.length; i < I; i += 2) {
+            for (let i = 0, I = value.length; i < I; i += 2) {
                 object[value[i]] = value[i + 1]
             }
             return object
