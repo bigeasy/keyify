@@ -2,7 +2,7 @@
 [![codecov](https://codecov.io/gh/bigeasy/keyify/branch/master/graph/badge.svg)](https://codecov.io/gh/bigeasy/keyify)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A comparator function builder.
+Create a canonical string key from a JSON object.
 
 | What          | Where                                         |
 | --- | --- |
