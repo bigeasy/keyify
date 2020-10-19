@@ -10,6 +10,10 @@
                             "bluey", "key", "json"
     ],
     "author":               "Alan Gutierrez <alan@prettyrobots.com>",
+    "contributors":
+    [
+                            "chocolateboy <chocolate@cpan.org> (https://github.com/chocolateboy)"
+    ],
     "homepage":             "https://github.com/bigeasy/keyify",
     "bugs":                 "https://github.com/bigeasy/keyify/issues",
     "license":              "MIT",
