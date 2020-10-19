@@ -6,6 +6,9 @@ function replacer (key, value) {
         return value
     }
     if (typeof value == 'object') {
+        if (value == null) {
+            return null
+        }
         const array = [ 'object' ]
         const keys = Object.keys(value).sort()
         for (let i = 0, I = keys.length; i < I; i++) {
